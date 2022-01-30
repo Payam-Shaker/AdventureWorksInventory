@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AdventureWorksInventory.Models.Address>
+@{
+    ViewData["Title"] = "Address Book!";
+}
+<div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome To my Address Book!</h1>
+    </div>
+    <div>
+        <h1>Address Table</h1>
+        <a asp-action="AddAddressIndex" asp-controller="Address" class="btn btn-outline-primary">Add new Address</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.AddressLine1)</th>
+                    <th>@Html.DisplayNameFor(model => model.City)</th>
+                    <th>@Html.DisplayNameFor(model => model.PostalCode)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in @Model)
+                {
+                    <tr>
+                        <td>@m.AddressLine1</td>
+                        <td>@m.City</td>
+                        <td>@m.PostalCode</td>
+                        <td>
+                            <a asp-action="Index" asp-controller="Address" class="btn btn-outline-primary"  asp-route-id ="@m.AddressID">Update</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-controller="Address" class="btn btn-outline-danger"  asp-route-id ="@m.AddressID">Delete</a>
+
+                        </td>
+                    </tr>                    
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
